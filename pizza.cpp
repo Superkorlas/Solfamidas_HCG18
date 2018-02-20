@@ -15,9 +15,10 @@ int main(){
 
 	in >> filas;
 	in >> columnas;
-	vector<char> linea(columnas);
 	in >> minimo;
 	in >> maximo;
+	
+	vector<char> linea(columnas);
 
 	for ( int i = 0; i < filas; i++ ){
 		for ( int j = 0; j < columnas; j++ ){
