@@ -8,7 +8,6 @@ using namespace std;
 int main(){
 	
 	vector<vector<char> > pizza;
-	vector<char> linea;
 	char c;
 	int filas, columnas, minimo, maximo;
 	ifstream in( "example.in" );
@@ -16,14 +15,14 @@ int main(){
 
 	in >> filas;
 	in >> columnas;
+	vector<char> linea(columnas);
 	in >> minimo;
 	in >> maximo;
 
 	for ( int i = 0; i < filas; i++ ){
-		linea.clear();
 		for ( int j = 0; j < columnas; j++ ){
 			in >> c;
-			linea.push_back( c );
+			linea[j] = c;
 		}
 		pizza.push_back( linea );
 	}
