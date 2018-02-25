@@ -7,33 +7,73 @@
 
 using namespace std;
 
-vector<vector<char> > pizza;
-vector<pair<int, int> > pos_mushroom, pos_tomato;
-int filas, columnas, ingredientes_minimos, cacho_maximo, num_mushroom = 0, num_tomato = 0;
+typedef int ingredient;
+
+struct point {
+	int x;
+	int y;
+};
+
+
+const ingredient mushroom = 0;
+const ingredient tomato = 1;
+
+vector<vector<ingredient> > pizza;
+vector<vector<point> > positions( 2, vector<point>() );
+int rows, cols, minIngredients, biggestSlice;
+vector<int> ingredientCount( 2, 0 );
+ingredient lessCount;
+
+
+// Self-explanatory HAHAHAHAHAHAHAHAH
+
+inline ingredient charToInt( char c ){
+
+	return c == 'T';
+}
+
+
+void init(){
+
+}
+
+inline void findSmaller(){
+
+	lessCount = ingredientCount[mushroom] > ingredientCount[tomato];
+}
+
 
 /** Devuelve la distancia entre dos objetos (tomato, mushroom) */
-int calcular_distancia(pair<int, int> obj1, pair<int, int> obj2) {
-	int dist_horizontal = abs(obj1.first - obj2.first);
-	int dist_vertical = abs(obj1.second - obj2.second);
-	return dist_horizontal + dist_vertical;
+int distance( point obj1, point obj2 ){
+
+	int dist_horizontal = abs(obj1.x - obj2.x) + 1;
+	int dist_vertical = abs(obj1.y - obj2.y) + 1;
+	return dist_horizontal * dist_vertical;
 }
+
 
 /** Devuelve vector con las posiciones de los elementos cercanos que no sobrepasan el limite de distancia.
  * obj -> elemento del que queremos buscar los vecinos
- * pos -> posicion del elemento en el vector del ingrediente (pos_mushroom, pos_tomato)
+ * pos -> posicion del elemento en el vector del ingrediente (mushroomPositions, tomatoPositions)
  */
-vector<pair<int, int> > buscar_cercanos (pair<int, int> obj, int pos) {
-	vector<pair<int, int> > pos_cercanos;
+
+vector<point> buscar_cercanos ( point obj, int pos ) {
+
+	vector<point> pos_cercanos;
+
+
 	//Trabajamos con Tomates
-	if (pizza[pos.first][pos.second] == 'T') {
-		for (int i = pos; i < pos_tomato.size())
+	if ( pizza[obj.x][obj.y] == tomato ) {
+		for (int i = pos; i < positions[tomato].size(); i++){}
 	} else {  //Trabajamos con Champiñones
 		
 	}
 	return pos_cercanos;
+
+
 }
 
-vector<int> b_and_b(vector<pair<int, int>> & posiciones, int poda){
+vector<int> b_and_b(vector<point> & posiciones, int poda){
 	
 }
 
@@ -42,52 +82,91 @@ vector<int> b_and_b(vector<pair<int, int>> & posiciones, int poda){
  * cuando sobrepase ese número. También elige qué elemento está en minoría para
  * pasarselo al algorimo.
  */
-vector<int> solucionar_problema(){
-	int poda, best_case, worst_case, dimensiones = filas*columnas;
-	if (num_tomato >= num_mushroom) {
-		best_case = (num_mushroom * cachos_maximos) / ingredientes_minimos;
+vector<int> BRNO_MAGIK(){
+
+
+	int poda, best_case, worst_case, dimensiones = rows * cols;
+
+	//( dimensiones / biggestSlice ) / ( ingredientCount[lessCount] * biggestSlice )
+
+	best_case = ( ingredientCount[lessCount] * biggestSlice) / minIngredients;			// Maximun amount of valid slices
+	best_case = ( best_case > dimensiones ) ? dimensiones : best_case;	// Adjust to reality
+	worst_case = ingredientCount[lessCount] * 2;
+	poda = ( best_case + worst_case ) / 2;
+
+	return b_and_b( positions[ 1 - lessCount ], poda );
+
+
+	/*if (tomatoCount >= mushroomCount) {
+		best_case = (mushroomCount * biggestSlice) / minIngredients;
 		best_case = (best_case > dimensiones) ? dimensiones : best_case;
-		worst_case = (num_mushroom * 2);
+		worst_case = (mushroomCount * 2);
 		poda = (best_case + worst_case) / 2;
-		return b_and_b(pos_tomato, poda);
+		return b_and_b(tomatoPositions, poda);
 	} else {
-		best_case = (num_tomato * cachos_maximos) / ingredientes_minimos;
+		best_case = (tomatoCount * biggestSlice) / minIngredients;
 		best_case = (best_case > dimensiones) ? dimensiones : best_case;
-		worst_case = (num_tomato * 2);
+		worst_case = (tomatoCount * 2);
 		poda = (best_case + worst_case) / 2;
-		return b_and_b(pos_mushroom, poda);
-	}
+		return b_and_b(mushroomPositions, poda);
+	}*/
 }
 
+
 int main(){
+
+
 	char c;
 	ifstream in( "example.in" );
+	ingredient newIngredient;
+	point newIngredientPosition;
 
-	in >> filas;
-	in >> columnas;
-	in >> ingredientes_minimos;
-	in >> cacho_maximo;
+	in >> rows;
+	in >> cols;
+	in >> minIngredients;
+	in >> biggestSlice;
+	vector<ingredient> newLine( cols );
 	
-	vector<char> linea(columnas);
 
-	for ( int i = 0; i < filas; i++ ){
-		for ( int j = 0; j < columnas; j++ ){
+	// Read the data and write the matrix
+
+	for ( int i = 0; i < rows; i++ ){
+		for ( int j = 0; j < cols; j++ ){
+
 			in >> c;
-			if (c == 'M') {
-				num_mushroom++;
-				pos_mushroom.push_back(make_pair(i,j));
+			newIngredient = charToInt( c );
+			newLine[j] = newIngredient;
+			newIngredientPosition.x = i;
+			newIngredientPosition.y = j;
+
+			ingredientCount[newIngredient]++;
+			positions[newIngredient].push_back( newIngredientPosition );
+
+
+
+			/*if ( c == mushroom ) {
+				mushroomCount++;
+				mushroomPositions.push_back( newIngredientPosition );
 			}
 			else {
-				num_tomato++;
-				pos_tomato.push_back(make_pair(i,j));
-			}
-			linea[j] = c;
+				tomatoCount++;
+				tomatoPositions.push_back( newIngredientPosition );
+			}*/
 		}
-		pizza.push_back( linea );
+
+		pizza.push_back( newLine );
 	}
 
-	for ( int i = 0; i < filas; i++ ){
-		for ( int j = 0; j < columnas; j++ )
+	findSmaller();
+
+
+	// 
+
+	for ( int i = 0; i < positions[lessCount]; i++ );
+
+
+	for ( int i = 0; i < rows; i++ ){
+		for ( int j = 0; j < cols; j++ )
 			cout << pizza[i][j];
 		cout << endl;
 	}
