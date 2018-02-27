@@ -167,7 +167,7 @@ int main(){
 
 	srand( time( NULL ) );
 
-	slice cacho( 0, 0, 2, 1 );
+	Slice slice( 0, 0, 2, 1 );
 
 	char c;
 	ifstream in( "example.in" );

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-class slice {
+class Slice {
 
 	// u: upper
 	// b: bottom
@@ -9,7 +9,7 @@ class slice {
 
 	public:
 
-        slice( int a, int b, int c, int d )
+        Slice( int a, int b, int c, int d )
 		: ux(a), uy(b), bx(c), by(d) {}
 
         // Desplazar el trozo
