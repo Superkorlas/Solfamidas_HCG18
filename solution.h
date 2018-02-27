@@ -6,15 +6,19 @@ using namespace std;
 
 class Solution {
 
-	int rows;
-
 	vector<Slice> slices;
 
 	public:
 
-		Solution( int rows, vector<Slice> slices ) {
+		Solution() {
 
-			this->rows = rows;
-			this->slices = slices;
+			// Generar al azar trozos válidos
 		}
+
+		// score
+
+		// si puede o no mutarse
+		// intenta mutar todos sus slice. Devuelve false si no, y devuelve true si sí y el trozo que puede mutarse se muta
+
+		// 
 };

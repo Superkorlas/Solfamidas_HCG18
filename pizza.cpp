@@ -5,8 +5,8 @@
 #include <fstream>
 #include <vector>
 #include <time.h>
-#include "solution.h"
 #include "point.h"
+#include "population.h"
 
 using namespace std;
 
@@ -164,9 +164,7 @@ int main(){
 	srand( time( NULL ) );
 
 	Slice slice( 0, 0, 2, 1 );
-	vector<Slice> slices;
-		slices.push_back( slice );
-	Solution solution( 1, slices );
+	Solution solution;
 
 	char c;
 	ifstream in( "example.in" );
