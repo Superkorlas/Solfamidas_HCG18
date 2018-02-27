@@ -15,6 +15,26 @@ struct point {
 };
 
 
+const string
+	Black = "\033[30m",
+	Red = "\033[31m",
+	Green = "\033[32m",
+	Yellow = "\033[33m",
+	Blue = "\033[34m",
+	Magenta = "\033[35m",
+	Cyan = "\033[36m",
+	White = "\033[37m",
+	BrightBlack = "\033[30;1m",
+	BrightRed = "\033[31;m1",
+	BrightGreen = "\033[2;1m",
+	BrightYellow = "\033[33;1m",
+	BrightBlue = "\033[34;1m",
+	BrightMagenta = "\033[35;1m",
+	BrightCyan = "\033[36;1m",
+	BrightWhite = "\033[37;1m",
+	Default = "\033[0m";
+
+
 const ingredient mushroom = 0;
 const ingredient tomato = 1;
 
@@ -73,7 +93,7 @@ vector<point> buscar_cercanos ( point obj, int pos ) {
 
 }
 
-vector<int> b_and_b(vector<point> & posiciones, int poda){
+void b_and_b(vector<point> & posiciones, int poda){
 	
 }
 
@@ -82,7 +102,7 @@ vector<int> b_and_b(vector<point> & posiciones, int poda){
  * cuando sobrepase ese número. También elige qué elemento está en minoría para
  * pasarselo al algorimo.
  */
-vector<int> BRNO_MAGIK(){
+/*vector<int> BRNO_MAGIK(){
 
 
 	int poda, best_case, worst_case, dimensiones = rows * cols;
@@ -110,7 +130,7 @@ vector<int> BRNO_MAGIK(){
 		poda = (best_case + worst_case) / 2;
 		return b_and_b(mushroomPositions, poda);
 	}*/
-}
+//}
 
 
 int main(){
@@ -141,17 +161,6 @@ int main(){
 
 			ingredientCount[newIngredient]++;
 			positions[newIngredient].push_back( newIngredientPosition );
-
-
-
-			/*if ( c == mushroom ) {
-				mushroomCount++;
-				mushroomPositions.push_back( newIngredientPosition );
-			}
-			else {
-				tomatoCount++;
-				tomatoPositions.push_back( newIngredientPosition );
-			}*/
 		}
 
 		pizza.push_back( newLine );
@@ -162,12 +171,17 @@ int main(){
 
 	// 
 
-	for ( int i = 0; i < positions[lessCount]; i++ );
+	for ( int i = 0; i < positions[lessCount].size(); i++ );
 
 
 	for ( int i = 0; i < rows; i++ ){
-		for ( int j = 0; j < cols; j++ )
+		for ( int j = 0; j < cols; j++ ){
+			if ( pizza[i][j] == tomato )
+				cout << Red;
+			else
+				cout << Blue;
 			cout << pizza[i][j];
-		cout << endl;
+		}
+		cout << endl << Black;
 	}
 }
