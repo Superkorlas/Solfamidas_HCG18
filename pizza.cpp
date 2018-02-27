@@ -5,16 +5,12 @@
 #include <fstream>
 #include <vector>
 #include <time.h>
-#include "slice.h"
+#include "solution.h"
+#include "point.h"
 
 using namespace std;
 
 typedef int ingredient;
-
-struct point {
-	int x;
-	int y;
-};
 
 // matrix para saber si una porci´ón est´áa cogida
 
@@ -168,6 +164,9 @@ int main(){
 	srand( time( NULL ) );
 
 	Slice slice( 0, 0, 2, 1 );
+	vector<Slice> slices;
+		slices.push_back( slice );
+	Solution solution( 1, slices );
 
 	char c;
 	ifstream in( "example.in" );
