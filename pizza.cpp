@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <fstream>
 #include <vector>
+#include <time.h>
+#include "slice.h"
 
 using namespace std;
 
@@ -13,6 +15,32 @@ struct point {
 	int x;
 	int y;
 };
+
+// matrix para saber si una porci´ón est´áa cogida
+
+/*class slice {
+
+	// u: upper
+	// b: bottom
+	int ux, uy, bx, by;
+
+	slice( int a, int b, int c, int d )
+		: ux(a), uy(b), bx(c), by(d) {}
+
+    // Desplazar el trozo
+    void move(){
+        
+
+    }
+    
+    // Agrandar un trozo hacia un lado
+    
+    // Comprobar si el trozo es válido <- Implica una estructura conjunta
+    
+    // 
+    
+    
+};*/
 
 
 const string
@@ -39,6 +67,7 @@ const ingredient mushroom = 0;
 const ingredient tomato = 1;
 
 vector<vector<ingredient> > pizza;
+vector<vector<bool> > pizza_logica;
 vector<vector<point> > positions( 2, vector<point>() );
 int rows, cols, minIngredients, biggestSlice;
 vector<int> ingredientCount( 2, 0 );
@@ -117,7 +146,7 @@ void b_and_b(vector<point> & posiciones, int poda){
 	return b_and_b( positions[ 1 - lessCount ], poda );
 
 
-	/*if (tomatoCount >= mushroomCount) {
+	if (tomatoCount >= mushroomCount) {
 		best_case = (mushroomCount * biggestSlice) / minIngredients;
 		best_case = (best_case > dimensiones) ? dimensiones : best_case;
 		worst_case = (mushroomCount * 2);
@@ -129,12 +158,16 @@ void b_and_b(vector<point> & posiciones, int poda){
 		worst_case = (tomatoCount * 2);
 		poda = (best_case + worst_case) / 2;
 		return b_and_b(mushroomPositions, poda);
-	}*/
-//}
+	}
+}*/
 
 
 int main(){
 
+
+	srand( time( NULL ) );
+
+	slice cacho( 0, 0, 2, 1 );
 
 	char c;
 	ifstream in( "example.in" );
@@ -179,7 +212,7 @@ int main(){
 			if ( pizza[i][j] == tomato )
 				cout << Red;
 			else
-				cout << Blue;
+				cout << Green;
 			cout << pizza[i][j];
 		}
 		cout << endl << Black;
