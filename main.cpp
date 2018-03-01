@@ -7,6 +7,7 @@
 #include <time.h>
 #include "rides.h"
 #include "car.h"
+#include "cars.h"
 
 using namespace std;
 
@@ -55,7 +56,7 @@ int main(){
 		>> bonus
 		>> steps;
 	vector<char> newLine( cols );
-	vector<vector<char> > pizza( rows, vector<char>() );
+	vector<Cars> cars( vehicles );
 
 
 	
