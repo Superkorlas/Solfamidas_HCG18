@@ -17,7 +17,7 @@ class Cars {
 
 
         point Cars::GetCarPosition(int carIndex){
-            cars[carIndex].getPosition();
+            cars[carIndex].GetPosition();
         }
 
         void Cars::Update(){
