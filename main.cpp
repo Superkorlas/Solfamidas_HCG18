@@ -6,6 +6,7 @@
 #include <vector>
 #include <time.h>
 #include "point.h"
+#include "rides.h"
 
 using namespace std;
 
@@ -44,11 +45,15 @@ int main(){
 
 	char c;
 	ifstream in( "example.in" );
-	int rows, cols, vehicles, steps, rides, startTime, finishTime;
+	int rows, cols, vehicles, steps, rides, startTime, finishTime, bonus;
 	point start, finish;
 
-	in >> rows;
-	in >> cols;
+	in >> rows
+		>> cols
+		>> vehicles
+		>> rides
+		>> bonus
+		>> steps;
 	vector<char> newLine( cols );
 	vector<vector<char> > pizza( rows, vector<char>() );
 
