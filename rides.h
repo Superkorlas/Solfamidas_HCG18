@@ -37,23 +37,24 @@ Rides::Rides( int amount ){
 
 
 pair<Ride,bool> Rides::Travel_Search(point p){
-	vector<Ride>::iterator best_Ride = rides.begin();
+	vector<Ride>::iterator best_Ride= rides.begin();
 	int best_distance=0;
 
 	vector<Ride>::iterator it;
 
 	for(it = rides.begin(); it != rides.end(); it++){
-	  if( Distance(it->GetStart(),p) < best_distance ){
-			best_distance = Distance(it->GetStart(),p);
-			best_Ride      = it;
+		if(!(*it).GetAssigned()){
+		  if( best_distance < Distance(it->GetStart(),p)){
+				best_distance = Distance(it->GetStart(),p);
+				best_Ride      = it;
+			}
 		}
 	}
 
-	if ( best_Ride != rides.end() )
-		rides.erase( best_Ride );
+	(*best_Ride).Assign();
+	rides.erase( best_Ride );
 
 	return make_pair( (*best_Ride), rides.size() > 0 );
-
 }
 
 int Rides::Distance( point a, point b ){

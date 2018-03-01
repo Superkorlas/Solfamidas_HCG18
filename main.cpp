@@ -60,7 +60,7 @@ int main(){
 		in >> tmp1 >> tmp2;
 		finish = point( tmp1, tmp2 );
 		cin >> startTime >> finishTime;
-		Ride ride(start,finish,startTime,finishTime,i);
+		Ride ride(start,finish,startTime,finishTime);
 		rides.push_back(ride);
 	}
 
@@ -68,6 +68,5 @@ int main(){
 
 	for ( int step = 0; step < steps && end; step++){
 		end = cars.Update();
-		cout << step << endl;
 	}
 }

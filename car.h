@@ -3,6 +3,7 @@
 #include "point.h"
 #include "ride.h"
 #include "stdlib.h"
+#include <vector>
 
 int row_limit;
 int column_limit;
@@ -18,7 +19,7 @@ class Car {
 	bool _rand;
 
 	public:
-
+		vector<int> travels;
 		Car();
 		void Move();
 		void Update();
@@ -41,12 +42,23 @@ Car::Car() {
 
 void Car::Move() {
 	if (busy) {
-		if (pos.x < ride.GetFinish().x) {
-			pos.x++;
-		} else if (pos.y < ride.GetFinish().y) {
-			pos.y++;
+		if (!pick_up) {
+			if (pos.x < ride.GetFinish().x) {
+				pos.x++;
+			} else if (pos.y < ride.GetFinish().y) {
+				pos.y++;
+			} else {
+				busy = false;
+				travels.push_back(ride.code);
+			}
 		} else {
-			busy = false;
+			if (pos.x < ride.GetStart().x) {
+				pos.x++;
+			} else if (pos.y < ride.GetStart().y) {
+				pos.y++;
+			} else {
+				pick_up = false;
+			}
 		}
 	} else if (_rand){
 		if (pos.x < column_limit) {
@@ -75,6 +87,12 @@ int Car::WhenFree() {
 
 void Car::SetRide(Ride newRide) {
 	ride = newRide;
+	busy = true;
+	if (pos.x == ride.GetStart().x && pos.y == ride.GetStart().y) {
+		pick_up = true;
+	} else {
+		pick_up = false;
+	}
 }
 
 point Car::GetPosition() {
