@@ -16,4 +16,7 @@ class Car {
 
 Car::Car() {
 	busy = false;
+	pos.x = 0;
+	pos.y = 0;
+
 }
