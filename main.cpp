@@ -39,6 +39,7 @@ int main(){
 	ifstream in( "example.in" );
 	int rows, cols, vehicles, steps, num_rides, startTime, finishTime, bonus;
 	int tmp1, tmp2;
+	bool end = true;
 	point start, finish;
 
 	cin >> rows
@@ -64,4 +65,8 @@ int main(){
 	}
 
 	Cars cars(vehicles, rides);
+
+	for(int t = 0; t < steps && end; t++){
+		end = cars.Update();
+	}
 }
