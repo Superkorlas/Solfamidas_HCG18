@@ -5,8 +5,8 @@
 #include <fstream>
 #include <vector>
 #include <time.h>
-#include "point.h"
 #include "rides.h"
+#include "car.h"
 
 using namespace std;
 
