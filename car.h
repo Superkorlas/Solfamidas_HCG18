@@ -13,6 +13,7 @@ class Car {
 	Ride ride;
 	point pos;
 	bool busy;
+	int  numRide;
 
 	bool _rand;
 
@@ -27,12 +28,15 @@ class Car {
 		point GetPosition();
 		static void SetRowLimit(int new_row_limit);
 		static void SetColumnLimit(int new_column_limit);
+		int GetNumRides();
+
 
 };
 
 Car::Car() {
 	busy = false;
 	_rand = false;
+	numRide = 0;
 }
 
 void Car::Move() {
@@ -75,6 +79,10 @@ void Car::SetRide(Ride newRide) {
 
 point Car::GetPosition() {
 	return pos;
+}
+
+int Car::GetNumRides(){
+	return numRide;
 }
 
 #endif
