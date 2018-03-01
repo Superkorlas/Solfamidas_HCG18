@@ -6,6 +6,7 @@
 
 int row_limit;
 int column_limit;
+int step;
 
 class Car {
 
