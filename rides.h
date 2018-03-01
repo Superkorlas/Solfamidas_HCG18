@@ -1,37 +1,63 @@
 
+#ifndef _CARS_
+#define _CARS_
+
 #include <vector>
 #include <stdlib.h>
 #include <utility>
 #include "point.h"
+#include "ride.h"
 
 using namespace std;
 
 
 class Rides {
 
-	vector<pair<point, point>> rides; //Viajes inicio - destino
-	vector<point>  cars;// Coches posicion
-
-	vector< pair<bool, int> > car_aviability; //Coche disponibilidad -  tiempo hasta desponible
-	vector< pair<int, int> > travel ;   // Viaje tiempo inicio tiempo fin
-
-	vector< bool >  travel_aviability;
+	vector<Ride> rides; //Viajes inicio - destino
 
 	public:
 
 		Rides( int amount );
 
+		Ride Travel_Search(point p);
 
-		void Car_Selection(/* arguments */);
+		int Distance(point a, point b);
 
-		int distance(point a, point b);
+		void update();
 
 
 
 };
 
 
-int Rides::distance( point a, point b ){
+Ride Rides::Travel_Search(point p){
+	Ride best_Car;
+	int best_distance=0;
+
+	vector<Ride>::iterator it;
+
+	for(it = rides.begin(); it != rides.end(); it++){
+		  if( best_distance < Distance((*it).GetStart(),p)){
+				best_distance = Distance((*it).GetStart(),p);
+				best_Car      = (*it);
+			}
+	}
+
+	return best_Car;
+}
+
+int Rides::Distance( point a, point b ){
 
 	return abs( a.x - b.x ) + abs( a.y - b.y );
 }
+
+void Rides::update(){
+	vector<Ride>::iterator it;
+
+	for(it = rides.begin(); it != rides.end(); it++)
+		(*it).Update();
+
+
+}
+
+#endif
