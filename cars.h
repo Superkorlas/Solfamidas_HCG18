@@ -9,8 +9,9 @@ class Cars {
     std::vector<Car> cars;
     Rides rides;
 
-    Cars(int numberCars){
+    Cars(int numberCars, Rides &theRides){
         cars.resize(numberCars);
+        rides = theRides;
     }
 
 
@@ -21,8 +22,8 @@ class Cars {
     void Cars::Update(){
         for (int i = 0; i < cars.size(); i++){
             if(cars[i].GetBusy() == false){
-                //TODO set Ride to a car
-                cars[i].SetRide(rides.something);
+                //Setting new destination to the car
+                cars[i].SetRide(rides.Travel_Search(cars[i].GetPosition()));
             }
         }
     }
