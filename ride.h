@@ -42,6 +42,10 @@ class Ride {
 			return finish;
 		}
 
+		bool GetAssigned(){
+			return assigned;
+		}
+
 		void Assign(){
 			assigned = true;
 		}
