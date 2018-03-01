@@ -25,8 +25,13 @@ class Cars {
                 //Setting new destination to the car
                 cars[i].SetRide(rides.Travel_Search(cars[i].GetPosition()));
             }
+            else{
+                cars[i].Update();
+            }
         }
     }
+
+
 
 
 };
