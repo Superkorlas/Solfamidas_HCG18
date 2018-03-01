@@ -37,7 +37,7 @@ int main(){
 
 	srand( time( NULL ) );
 	ifstream in( "example.in" );
-	int rows, cols, vehicles, num_rides, startTime, finishTime, bonus;
+	int rows, cols, vehicles, steps, num_rides, startTime, finishTime, bonus;
 	int tmp1, tmp2;
 	bool end = true;
 	point start, finish;
@@ -66,7 +66,7 @@ int main(){
 
 	Cars cars(vehicles, rides);
 
-	for(int t = 0; t < steps && end; t++){
+	for ( int step = 0; step < steps && end; step++){
 		end = cars.Update();
 	}
 }
