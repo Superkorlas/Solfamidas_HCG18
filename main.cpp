@@ -60,7 +60,7 @@ int main(){
 		cin >> tmp1 >> tmp2;
 		finish = point( tmp1, tmp2 );
 		cin >> startTime >> finishTime;
-		Ride ride(start,finish,startTime,finishTime);
+		Ride ride(start,finish,startTime,finishTime,i);
 		rides.push_back(ride);
 	}
 
