@@ -49,10 +49,6 @@ int main(){
 		>> rides
 		>> bonus
 		>> steps;
-	vector<char> newLine( cols );
-	vector<Cars> cars( vehicles );
-
-
 
 
 	// Read the data
