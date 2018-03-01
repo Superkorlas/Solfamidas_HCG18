@@ -41,7 +41,7 @@ int main(){
 	int tmp1, tmp2;
 	point start, finish;
 
-	in >> rows
+	cin >> rows
 		>> cols
 		>> vehicles
 		>> num_rides
@@ -54,12 +54,14 @@ int main(){
 	// Read the data
 
 	for ( int i = 0; i < num_rides; i++ ){
-		in >> tmp1 >> tmp2;
+		cin >> tmp1 >> tmp2;
 		start = point( tmp1, tmp2 );
-		in >> tmp1 >> tmp2;
+		cin >> tmp1 >> tmp2;
 		finish = point( tmp1, tmp2 );
-		in >> startTime >> finishTime;
+		cin >> startTime >> finishTime;
 		Ride ride(start,finish,startTime,finishTime);
 		rides.push_back(ride);
 	}
+
+	Cars cars(vehicles, rides);
 }

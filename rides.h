@@ -1,6 +1,6 @@
 
-#ifndef _CARS_
-#define _CARS_
+#ifndef _RIDES_
+#define _RIDES_
 
 #include <vector>
 #include <stdlib.h>

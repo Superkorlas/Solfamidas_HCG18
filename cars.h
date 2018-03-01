@@ -16,7 +16,7 @@ class Cars {
         }
 
 
-        Point Cars::GetCarPosition(int carIndex){
+        point Cars::GetCarPosition(int carIndex){
             cars[carIndex].getPosition();
         }
 

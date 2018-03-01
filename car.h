@@ -1,6 +1,7 @@
 #ifndef _CAR_
 #define _CAR_
 #include "point.h"
+#include "ride.h"
 #include "stdlib.h"
 
 int row_limit;
@@ -14,7 +15,7 @@ class Car {
 
 	bool _rand;
 
-	public: 
+	public:
 
 		Car();
 		void Move();
