@@ -1,12 +1,13 @@
 
 #include <vector>
+#include "ride.h"
 
 using namespace std;
 
 
 class Rides {
 
-	vector<int> rides;
+	vector<Ride> rides;
 
 	public:
 
