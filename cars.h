@@ -17,7 +17,7 @@ class Cars {
         }
 
 
-        Point GetCarPosition(int carIndex){
+        point GetCarPosition(int carIndex){
             cars[carIndex].getPosition();
         }
 
