@@ -5,6 +5,7 @@
 #include <fstream>
 #include <vector>
 #include <time.h>
+#include "point.h"
 
 using namespace std;
 
@@ -29,6 +30,12 @@ const string
 	Default = "\033[0m";
 
 
+int distance( point a, point b ){
+
+	return abs( a.x - b.x ) + abs( a.y - b.y );
+}
+
+
 
 int main(){
 
@@ -37,7 +44,7 @@ int main(){
 
 	char c;
 	ifstream in( "example.in" );
-	int rows, cols;
+	int rows, cols, vehicles, steps;
 
 	in >> rows;
 	in >> cols;
