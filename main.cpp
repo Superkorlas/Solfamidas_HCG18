@@ -36,33 +36,30 @@ int main(){
 
 
 	srand( time( NULL ) );
-
-	char c;
 	ifstream in( "example.in" );
-	int rows, cols, vehicles, steps, rides, startTime, finishTime, bonus;
-	int tmp1, tmp2, tmp3, tmp4;
+	int rows, cols, vehicles, steps, num_rides, startTime, finishTime, bonus;
+	int tmp1, tmp2;
 	point start, finish;
 
 	in >> rows
 		>> cols
 		>> vehicles
-		>> rides
+		>> num_rides
 		>> bonus
 		>> steps;
-	vector<char> newLine( cols );
-	vector<Cars> cars( vehicles );
 
 
-
+	Rides rides(num_rides);
 
 	// Read the data
 
-	for ( int i = 0; i < rides; i++ ){
+	for ( int i = 0; i < num_rides; i++ ){
 		in >> tmp1 >> tmp2;
 		start = point( tmp1, tmp2 );
 		in >> tmp1 >> tmp2;
 		finish = point( tmp1, tmp2 );
 		in >> startTime >> finishTime;
-		// ! crear viaje con todo esto. Falta el constructor
+		Ride ride(start,finish,startTime,finishTime);
+		rides.push_back(ride);
 	}
 }

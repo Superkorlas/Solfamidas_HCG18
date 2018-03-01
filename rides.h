@@ -17,17 +17,23 @@ class Rides {
 
 	public:
 
+		Rides();
 		Rides( int amount );
 
 		Ride Travel_Search(point p);
+		void push_back(Ride& r){
+			return rides.push_back(r);
+		}
 
 		int Distance(point a, point b);
 
-		void update();
-
-
-
 };
+
+Rides::Rides(){}
+
+Rides::Rides( int amount ){
+	vector<Ride> rides(amount, Ride());
+}
 
 
 Ride Rides::Travel_Search(point p){

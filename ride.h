@@ -26,7 +26,7 @@ class Ride {
 			assigned = false;
 		}
 
-		Ride( Ride & r ){
+		Ride(const Ride & r ){
 			start = r.start;
 			finish = r.finish;
 			startTime = r.startTime;
