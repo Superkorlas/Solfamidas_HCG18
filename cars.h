@@ -6,30 +6,31 @@
 #include "ride.h"
 
 class Cars {
-    std::vector<Car> cars;
-    Rides rides;
+    public:
+        std::vector<Car> cars;
+        Rides rides;
 
-    Cars(int numberCars, Rides &theRides){
-        cars.resize(numberCars);
-        rides = theRides;
-    }
+        Cars(int numberCars, Rides &theRides){
+            cars.resize(numberCars);
+            rides = theRides;
+        }
 
 
-    Point Cars::GetCarPosition(int carIndex){
-        cars[carIndex].getPosition();
-    }
+        Point Cars::GetCarPosition(int carIndex){
+            cars[carIndex].getPosition();
+        }
 
-    void Cars::Update(){
-        for (int i = 0; i < cars.size(); i++){
-            if(cars[i].GetBusy() == false){
-                //Setting new destination to the car
-                cars[i].SetRide(rides.Travel_Search(cars[i].GetPosition()));
-            }
-            else{
-                cars[i].Update();
+        void Cars::Update(){
+            for (int i = 0; i < cars.size(); i++){
+                if(cars[i].GetBusy() == false){
+                    //Setting new destination to the car
+                    cars[i].SetRide(rides.Travel_Search(cars[i].GetPosition()));
+                }
+                else{
+                    cars[i].Update();
+                }
             }
         }
-    }
 
 
 
