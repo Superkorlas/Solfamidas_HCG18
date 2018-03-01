@@ -21,8 +21,8 @@ class Cars {
     void Cars::Update(){
         for (int i = 0; i < cars.size(); i++){
             if(cars[i].GetBusy() == false){
-                //TODO 
-                cars[i].SetRide();
+                //TODO set Ride to a car
+                cars[i].SetRide(rides.something);
             }
         }
     }
