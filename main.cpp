@@ -68,5 +68,6 @@ int main(){
 
 	for ( int step = 0; step < steps && end; step++){
 		end = cars.Update();
+		cout << step << endl;
 	}
 }
