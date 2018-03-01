@@ -16,19 +16,24 @@ class Cars {
         }
 
 
-        point GetCarPosition(int carIndex){
-            cars[carIndex].GetPosition();
+        Point GetCarPosition(int carIndex){
+            cars[carIndex].getPosition();
         }
 
-        void Update(){
+        bool Update(){
+            std::pair <Ride, bool> thePair;
             for (int i = 0; i < cars.size(); i++){
+                thePair.second = false;
                 if(cars[i].GetBusy() == false){
                     //Setting new destination to the car
-                    cars[i].SetRide(rides.Travel_Search(cars[i].GetPosition()));
+                    thePair = rides.Travel_Search(cars[i].GetPosition());
+                    cars[i].SetRide(thePair.first);
                 }
-                else{
-                    cars[i].Update();
-                }
+                 
+                
+                cars[i].Update(); 
+
+                return thePair.second;
             }
         }
 
