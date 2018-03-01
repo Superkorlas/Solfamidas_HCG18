@@ -46,6 +46,7 @@ int main(){
 	char c;
 	ifstream in( "example.in" );
 	int rows, cols, vehicles, steps, rides, startTime, finishTime, bonus;
+	int tmp1, tmp2, tmp3, tmp4;
 	point start, finish;
 
 	in >> rows
@@ -60,21 +61,14 @@ int main(){
 
 	
 
-	// Read the data and write the matrix
+	// Read the data
 
-	for ( int i = 0; i < rows; i++ ){
-		for ( int j = 0; j < cols; j++ ){
-			in >> c;
-			newLine[j] = c;
-		}
-		pizza.push_back( newLine );
-	}
-
-
-	for ( int i = 0; i < rows; i++ ){
-		for ( int j = 0; j < cols; j++ ){
-			cout << pizza[i][j];
-		}
-		cout << endl;
+	for ( int i = 0; i < rides; i++ ){
+		in >> tmp1 >> tmp2;
+		start = point( tmp1, tmp2 );
+		in >> tmp1 >> tmp2;
+		finish = point( tmp1, tmp2 );
+		in >> startTime >> finishTime;
+		// ! crear viaje con todo esto. Falta el constructor
 	}
 }
