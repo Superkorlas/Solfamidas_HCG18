@@ -36,13 +36,13 @@ int main(){
 
 
 	srand( time( NULL ) );
-	ifstream in( "example.in" );
+	ifstream in( "a_example.in" );
 	int rows, cols, vehicles, steps, num_rides, startTime, finishTime, bonus;
 	int tmp1, tmp2;
 	bool end = true;
 	point start, finish;
 
-	cin >> rows
+	in >> rows
 		>> cols
 		>> vehicles
 		>> num_rides
@@ -55,9 +55,9 @@ int main(){
 	// Read the data
 
 	for ( int i = 0; i < num_rides; i++ ){
-		cin >> tmp1 >> tmp2;
+		in >> tmp1 >> tmp2;
 		start = point( tmp1, tmp2 );
-		cin >> tmp1 >> tmp2;
+		in >> tmp1 >> tmp2;
 		finish = point( tmp1, tmp2 );
 		cin >> startTime >> finishTime;
 		Ride ride(start,finish,startTime,finishTime,i);

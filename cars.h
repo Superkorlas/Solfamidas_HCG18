@@ -38,6 +38,16 @@ class Cars {
             return thePair.second;
         }
 
+        void Print(){
+            for(int i = 0; i < cars.size(); i++){
+                cout << i << " ";
+                for(int j = 0; j < cars[i].travels.size(); j++){
+                    cout << cars[i].travels[j] << " ";
+                }
+                cout << endl;
+            }
+        }
+
 
 
 
