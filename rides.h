@@ -31,19 +31,23 @@ class Rides {
 
 
 Ride Rides::Travel_Search(point p){
-	Ride best_Car;
+	vector<Ride>::iterator best_Ride;
 	int best_distance=0;
 
 	vector<Ride>::iterator it;
 
 	for(it = rides.begin(); it != rides.end(); it++){
+		if(!(*it).GetAssigned()){
 		  if( best_distance < Distance(it->GetStart(),p)){
 				best_distance = Distance(it->GetStart(),p);
-				best_Car      = (*it);
+				best_Ride      = it;
 			}
+		}
 	}
 
-	return best_Car;
+	(*best_Ride).Assign();
+
+	return (*best_Ride);
 }
 
 int Rides::Distance( point a, point b ){
@@ -51,13 +55,5 @@ int Rides::Distance( point a, point b ){
 	return abs( a.x - b.x ) + abs( a.y - b.y );
 }
 
-void Rides::update(){
-	vector<Ride>::iterator it;
-
-	for(it = rides.begin(); it != rides.end(); it++)
-		(*it).Update();
-
-
-}
 
 #endif
