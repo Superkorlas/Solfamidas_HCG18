@@ -17,8 +17,8 @@ class Cars {
         }
 
 
-        point GetCarPosition(int carIndex){
-            cars[carIndex].GetPosition();
+        Point GetCarPosition(int carIndex){
+            cars[carIndex].getPosition();
         }
 
         bool Update(){
