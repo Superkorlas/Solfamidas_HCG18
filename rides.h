@@ -37,7 +37,7 @@ Rides::Rides( int amount ){
 
 
 pair<Ride,bool> Rides::Travel_Search(point p){
-	vector<Ride>::iterator best_Ride;
+	vector<Ride>::iterator best_Ride= rides.begin();
 	int best_distance=0;
 
 	vector<Ride>::iterator it;
