@@ -1,5 +1,5 @@
-
-
+#ifndef _CAR_
+#define _CAR_
 #include "point.h"
 
 
@@ -10,13 +10,39 @@ class Car {
 	bool busy;
 
 	public:
-
-		Car() {}
+		Car();
+		Move();
+		Update();
+		WhenFree();
+		SetRide(Ride newRide);
 };
 
 Car::Car() {
 	busy = false;
-	pos.x = 0;
-	pos.y = 0;
+}
+
+void Car::Move() {
+	if (busy) {
+
+	} else {
+
+	}
+}
+
+void Car::Update() {
+	Move();
+}
+
+bool Car::GetBusy() {
+	return busy;
+}
+
+int Car::WhenFree() {
 
 }
+
+void Car::SetRide(Ride newRide) {
+	ride = newRide;
+}
+
+#endif
