@@ -1,7 +1,6 @@
 // g++ -g -o pichalol pizza.cpp
 // Subido a github 13:38
 #include <iostream>
-#include <stdlib.h>
 #include <fstream>
 #include <vector>
 #include <time.h>
@@ -32,12 +31,6 @@ const string
 	Default = "\033[0m";
 
 
-int distance( point a, point b ){
-
-	return abs( a.x - b.x ) + abs( a.y - b.y );
-}
-
-
 
 int main(){
 
@@ -60,7 +53,7 @@ int main(){
 	vector<Cars> cars( vehicles );
 
 
-	
+
 
 	// Read the data
 
