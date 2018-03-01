@@ -16,11 +16,11 @@ class Cars {
         }
 
 
-        point Cars::GetCarPosition(int carIndex){
+        point GetCarPosition(int carIndex){
             cars[carIndex].GetPosition();
         }
 
-        void Cars::Update(){
+        void Update(){
             for (int i = 0; i < cars.size(); i++){
                 if(cars[i].GetBusy() == false){
                     //Setting new destination to the car
