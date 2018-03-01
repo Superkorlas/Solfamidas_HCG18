@@ -50,7 +50,6 @@ int main(){
 		>> bonus
 		>> steps;
 
-
 	// Read the data
 
 	for ( int i = 0; i < rides; i++ ){
