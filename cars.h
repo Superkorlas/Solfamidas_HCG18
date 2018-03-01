@@ -18,7 +18,7 @@ class Cars {
 
 
         point GetCarPosition(int carIndex){
-            cars[carIndex].GetPosition();
+            return cars[carIndex].GetPosition();
         }
 
         bool Update(){
@@ -34,8 +34,8 @@ class Cars {
 
                 cars[i].Update();
 
-                return thePair.second;
             }
+            return thePair.second;
         }
 
 

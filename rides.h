@@ -52,6 +52,7 @@ pair<Ride,bool> Rides::Travel_Search(point p){
 	}
 
 	(*best_Ride).Assign();
+	rides.erase( best_Ride );
 
 	return make_pair( (*best_Ride), rides.size() > 0 );
 }
