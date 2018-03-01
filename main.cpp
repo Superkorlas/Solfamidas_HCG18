@@ -44,7 +44,8 @@ int main(){
 
 	char c;
 	ifstream in( "example.in" );
-	int rows, cols, vehicles, steps;
+	int rows, cols, vehicles, steps, rides, startTime, finishTime;
+	point start, finish;
 
 	in >> rows;
 	in >> cols;
