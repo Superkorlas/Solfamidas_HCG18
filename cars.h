@@ -30,9 +30,9 @@ class Cars {
                     thePair = rides.Travel_Search(cars[i].GetPosition());
                     cars[i].SetRide(thePair.first);
                 }
-                 
-                
-                cars[i].Update(); 
+
+
+                cars[i].Update();
 
                 return thePair.second;
             }
