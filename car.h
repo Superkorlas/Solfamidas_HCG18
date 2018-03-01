@@ -15,6 +15,7 @@ class Car {
 	point pos;
 	bool busy;
 	int  numRide;
+	bool pick_up;
 
 	bool _rand;
 
