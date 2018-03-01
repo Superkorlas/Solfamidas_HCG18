@@ -37,8 +37,8 @@ Ride Rides::Travel_Search(point p){
 	vector<Ride>::iterator it;
 
 	for(it = rides.begin(); it != rides.end(); it++){
-		  if( best_distance < Distance((*it).GetStart(),p)){
-				best_distance = Distance((*it).GetStart(),p);
+		  if( best_distance < Distance(it->GetStart(),p)){
+				best_distance = Distance(it->GetStart(),p);
 				best_Car      = (*it);
 			}
 	}
