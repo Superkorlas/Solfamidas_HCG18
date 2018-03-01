@@ -13,17 +13,20 @@ class Ride {
 
 	public:
 
+		int code;
+
 		Ride(){
 			assigned = false;
 		}
 
-		Ride( point start, point finish, int startTime, int finishTime ){
+		Ride( point start, point finish, int startTime, int finishTime, int c ){
 
 			this->start = start;
 			this->finish = finish;
 			this->startTime = startTime;
 			this->finishTime = finishTime;
 			assigned = false;
+			code = c;
 		}
 
 		Ride(const Ride & r ){
@@ -32,6 +35,7 @@ class Ride {
 			startTime = r.startTime;
 			finishTime = r.finishTime;
 			assigned = r.assigned;
+			code = r.code;
 		}
 
 		point GetStart(){
