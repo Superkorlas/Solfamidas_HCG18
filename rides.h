@@ -20,7 +20,7 @@ class Rides {
 		Rides();
 		Rides( int amount );
 
-		Ride Travel_Search(point p);
+		pair<Ride,bool> Travel_Search(point p);
 		void push_back(Ride& r){
 			return rides.push_back(r);
 		}
@@ -36,7 +36,7 @@ Rides::Rides( int amount ){
 }
 
 
-Ride Rides::Travel_Search(point p){
+pair<Ride,bool> Rides::Travel_Search(point p){
 	vector<Ride>::iterator best_Ride;
 	int best_distance=0;
 
@@ -53,7 +53,7 @@ Ride Rides::Travel_Search(point p){
 
 	(*best_Ride).Assign();
 
-	return (*best_Ride);
+	return make_pair( (*best_Ride), rides.size() > 0 );
 }
 
 int Rides::Distance( point a, point b ){
